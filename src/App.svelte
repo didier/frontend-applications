@@ -1,1 +1,5 @@
-<h1>Hello World</h1>
+<script>
+  import Scene from './components/organisms/Scene.svelte'
+</script>
+
+<Scene />
