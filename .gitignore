@@ -4,3 +4,11 @@ node_modules
 dist
 dist-ssr
 
+.vscode/
+.idea
+node_modules
+dist
+dist-ssr
+.cache
+package-lock.json
+.DS_Store
