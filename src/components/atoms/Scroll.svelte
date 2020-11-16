@@ -8,7 +8,7 @@
 <style>
   div {
     width: 1ch;
-    height: var(--height);
+    height: calc(100vmax + var(--height));
   }
 </style>
 

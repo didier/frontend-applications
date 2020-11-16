@@ -6,7 +6,7 @@
 
   // set the width in the store
   const setWidth = () => {
-    $horizontalScrollWidth = scene.scrollWidth
+    requestAnimationFrame(() => ($horizontalScrollWidth = scene.scrollWidth))
   }
 </script>
 
@@ -18,8 +18,10 @@
     position: fixed;
     left: 0;
     top: 0;
-    display: grid;
-    grid-auto-flow: column;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 64px;
     /* For every 1px srolled, translate by -1px */
     transform: translateX(var(--scroll));
     transition: all 0.2s var(--ease-out);

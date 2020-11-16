@@ -11,9 +11,10 @@ html {
   --offset: 12px;
   --unit: clamp(100%, 3.5vw, 20px);
   font-size: var(--unit);
-} /*16px*/
+}
 
 body {
+  overscroll-behavior: none;
   background: white;
   font-weight: 400;
   line-height: 1.75;
