@@ -5,8 +5,6 @@
 
   import { scrollY } from '../meta/store'
 
-  export let width = 0
-
   $: isDriving = $scrollY !== 0
 </script>
 
