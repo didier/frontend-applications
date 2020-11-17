@@ -1,5 +1,3 @@
-<style lang="scss">
-  
-</style>
-
-<button on:click>Hello world</button>
+<button on:click>
+  <slot />
+</button>

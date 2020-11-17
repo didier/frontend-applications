@@ -22,10 +22,10 @@
 
   @keyframes bobble {
     0% {
-      transform: translate(0%, 0%);
+      transform: translate(var(--scroll), 0%);
     }
     100% {
-      transform: translate(2%, -1%) rotate(-1deg);
+      transform: translate(var(--scroll), -1%) rotate(-1deg);
     }
   }
 </style>

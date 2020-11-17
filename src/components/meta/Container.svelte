@@ -7,7 +7,6 @@
     margin: 0 auto;
     padding: 0 var(--offset);
   }
-
   .max-width {
     max-width: 65ch;
   }

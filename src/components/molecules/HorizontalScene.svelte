@@ -25,9 +25,9 @@
     padding: 20vh 0;
 
     /* For every 1px srolled, translate by -1px */
-
     transform: translate3d(var(--scroll), 0, 0);
     transition: all 0.2s var(--ease-out);
+
     > :global(*) {
       white-space: normal;
     }

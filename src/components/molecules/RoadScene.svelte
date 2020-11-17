@@ -3,7 +3,7 @@
 
   export let isDriving = false
 
-  import { scrollY } from '../meta/store'
+  import { horizontalScrollWidth, scrollY } from '../meta/store'
 
   $: isDriving = $scrollY !== 0
 </script>
@@ -50,7 +50,10 @@
 
 <svelte:window bind:scrollY={$scrollY} />
 
-<div class="road-scene" style="--delay: -{$scrollY}ms">
+<div
+  class="road-scene"
+  style="--delay: -{$scrollY}ms; --scroll: {($horizontalScrollWidth / ($horizontalScrollWidth - $scrollY)) * 100 - 100}%"
+>
   <div class="road" class:is-scrolling={isDriving} />
   <Car {isDriving} style="--delay: -{$scrollY}ms" />
 </div>
