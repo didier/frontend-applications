@@ -20,14 +20,15 @@
     top: 0;
     height: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
+    padding: 20vh 0;
 
     /* For every 1px srolled, translate by -1px */
-    transform: translateX(var(--scroll));
-    transition: all 0.2s var(--ease-out);
 
-    :global(*) {
+    transform: translate3d(var(--scroll), 0, 0);
+    transition: all 0.2s var(--ease-out);
+    > :global(*) {
       white-space: normal;
     }
   }
