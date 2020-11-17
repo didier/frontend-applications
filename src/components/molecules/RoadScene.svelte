@@ -16,7 +16,7 @@
     width: 100vw;
     height: 20vvmax;
     padding: 20px;
-    overflow-y: hidden;
+    overflow: hidden;
   }
 
   .road {
