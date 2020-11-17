@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Inter:400,500,600,700,800');
 * {
   font-family: 'Inter', sans-serif;
   margin: 0;
@@ -5,12 +6,13 @@
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Inter:400,500');
+/* @link https://utopia.fyi/generator-mk-ii?c=320,16,1.25,1140,24,1.333,4,2, */
 
 html {
+  /* --max: 20px; */
   --offset: 12px;
-  --unit: clamp(100%, 3.5vw, 20px);
-  font-size: var(--unit);
+  /* --unit: clamp(100%, 3.5vw, var(--max)); */
+  /* font-size: var(--unit); */
 }
 
 body {
@@ -20,6 +22,7 @@ body {
   line-height: 1.75;
   color: black;
   letter-spacing: -0.035em;
+  font-size: var(--step-0);
 }
 
 p {
@@ -50,35 +53,48 @@ h5,
 h1,
 .h1 {
   margin-top: 0;
-  font-size: 4.209rem;
+  font-size: var(--step-4);
+  font-weight: 700;
 }
 
 h2,
 .h2 {
-  font-size: 3.157rem;
+  font-size: var(--step-3);
+  font-weight: 600;
 }
 
 h3,
 .h3 {
-  font-size: 2.369rem;
+  font-size: var(--step-2);
+  font-weight: 500;
 }
 
 h4,
 .h4 {
-  font-size: 1.777rem;
+  font-size: var(--step-1);
+  font-weight: 400;
 }
 
 h5,
 .h5 {
-  font-size: 1.333rem;
+  font-size: var(--step-0);
 }
 
 small,
 .text_small {
-  font-size: 0.75rem;
+  --max: 0.75rem;
+  font-size: var(--step--1);
 }
 
 :root {
+  --step--2: clamp(0.64rem, 0.5602rem + 0.3988vw, 0.8444rem);
+  --step--1: clamp(0.8rem, 0.6732rem + 0.6341vw, 1.125rem);
+  --step-0: clamp(1rem, 0.8049rem + 0.9756vw, 1.5rem);
+  --step-1: clamp(1.25rem, 0.9576rem + 1.4622vw, 1.9994rem);
+  --step-2: clamp(1.5625rem, 1.132rem + 2.1524vw, 2.6656rem);
+  --step-3: clamp(1.9531rem, 1.3287rem + 3.122vw, 3.5531rem);
+  --step-4: clamp(2.4413rem, 1.5456rem + 4.478vw, 4.7363rem);
+
   --ease: ease-in-out;
   --ease-in: ease-in;
   --ease-out: ease-out;
@@ -126,4 +142,22 @@ small,
   --back: cubic-bezier(0.68, -0.55, 0.27, 1.55);
   --back-in: cubic-bezier(0.6, -0.28, 0.74, 0.05);
   --back-out: cubic-bezier(0.18, 0.89, 0.32, 1.27);
+}
+
+/**
+* CSS-only flexbox `gap` polyfill
+* @author Petr Odut <https://github.com/petr001>
+* @source https://codesandbox.io/s/exciting-saha-pyk7k?file=/src/styles.css:37-275
+*/
+
+.gap {
+  display: flex;
+  --gap: 0px;
+  --column-gap: var(--gap);
+  --row-gap: var(--gap);
+  margin: calc(-1 * var(--row-gap)) 0 0 calc(-1 * var(--column-gap));
+}
+
+.gap > * {
+  margin: calc(var(--row-gap)) 0 0 calc(var(--column-gap));
 }

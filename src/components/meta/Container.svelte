@@ -1,11 +1,18 @@
+<script>
+  export let wrap = false
+</script>
+
 <style lang="scss">
   .container {
-    max-width: 65ch;
     margin: 0 auto;
     padding: 0 var(--offset);
   }
+
+  .max-width {
+    max-width: 65ch;
+  }
 </style>
 
-<div class="container">
+<div class="container" class:max-width={wrap}>
   <slot />
 </div>
