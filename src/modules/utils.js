@@ -64,5 +64,18 @@ export function sortBy(array, property) {
  */
 export function getData(urls) {
   const promises = urls.map(url => fetch(url).then(res => res.json()))
-  return Promise.all(promises).then(values => { return values })
+  return Promise.all(promises).then(values => {
+    console.log(values)
+    return values
+  })
+}
+
+export function checkIfDataExistsInLocalStorage() {
+  const localData = window.localStorage.getItem('data')
+  return !!localData
+}
+
+
+export function storeDataToLocalStorage(data) {
+  window.localStorage.setItem('data', data)
 }

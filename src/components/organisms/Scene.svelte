@@ -4,6 +4,7 @@
   import HorizontalScene from '../molecules/HorizontalScene.svelte'
   import RoadScene from '../molecules/RoadScene.svelte'
   import TextElement from '../atoms/TextElement.svelte'
+  import Visualisation from '../molecules/Visualisation.svelte'
 </script>
 
 <HorizontalScene>
@@ -19,9 +20,7 @@
     </p>
   </TextElement>
   <TextElement>
-    <h2>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam magni.
-    </h2>
+    <Visualisation />>
   </TextElement>
   <TextElement>
     <h2>

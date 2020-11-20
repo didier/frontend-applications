@@ -1,4 +1,9 @@
-import { getData } from '/src/modules/utils'
+// Utils
+import {
+  getData,
+  checkIfDataExistsInLocalStorage,
+  storeDataToLocalStorage
+} from './utils'
 
 // Constants
 import {
@@ -8,6 +13,16 @@ import {
 } from './constants'
 
 export default async function cleanData() {
+
+  // Check if localstorage contains data.
+  const hasData = checkIfDataExistsInLocalStorage()
+
+  // A. Get data from localStorage, and return early
+  if (hasData) {
+    return JSON.parse(window.localStorage.getItem('data'))
+  }
+
+  // B. Fetch data from API
   // Destructure data after all three promises have been resolved
   const [
     tariefData,
@@ -18,14 +33,12 @@ export default async function cleanData() {
     GEO_PARKEERGARAGES,
     SPECIFICATIES_PARKEERGEBIED,
   ])
-
   const mergedData = geoData
     .map(location => {
       // Merge specs and geo based on AreaId
       const spec = specsData.find(spec => location.areaid === spec.areaid)
       return { ...location, ...spec }
     })
-
     .map(entry => {
       // Merge tarief, specs and geo based on AreaManagerId
       const tarief = tariefData.find(tarief => entry.areamanagerid === tarief.areamanagerid)
@@ -51,6 +64,8 @@ export default async function cleanData() {
         humanReadableAdress: JSON.parse(entry.location.human_address || '{}'),
       }
     }))
+
+  storeDataToLocalStorage(JSON.stringify(mergedData))
 
   // Return ✨utterly pristine✨ data
   return mergedData
