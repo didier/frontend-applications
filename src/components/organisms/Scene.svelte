@@ -5,10 +5,10 @@
   import RoadScene from '../molecules/RoadScene.svelte'
   import TextElement from '../atoms/TextElement.svelte'
   import Visualisation from '../molecules/Visualisation.svelte'
+  import ScrollIndicator from '../atoms/ScrollIndicator.svelte'
 </script>
 
 <HorizontalScene>
-  <!-- Insert 100 placeholder items to see if horizontal spacing works -->
   <TextElement>
     <h1>
       As a parking spot's customer price increases, does its convenience
@@ -20,16 +20,27 @@
     </p>
   </TextElement>
   <TextElement>
-    <Visualisation />>
+    <h2>Who doesn't love looking for parking spots?</h2>
+    <p>
+      Looking for a place to park can be a real pain. How do you know if there
+      will be a spot for you, especially in a more more expensive or more
+      popular location? We'll be diving deeper into how these factors relate to
+      each other.
+    </p>
+    <p>Let's establish some things first.</p>
+    <ScrollIndicator />
   </TextElement>
-  <TextElement>
-    <h2>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam magni.
-    </h2>
+  <TextElement center>
+    <Visualisation />
+    <br />
+    <h3>
+      This illustration of a garage indicates a parking location. This can be a
+      garage, a mall, spots on the street, and so forth.
+    </h3>
   </TextElement>
-  {#each [...Array(100)] as _}
+  <!-- {#each [...Array(100)] as _}
     <Placeholder />
-  {/each}
+  {/each} -->
 </HorizontalScene>
 
 <Scroll />

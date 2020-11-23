@@ -14,7 +14,7 @@
     left: 0;
     bottom: 0;
     width: 100vw;
-    height: 20vvmax;
+    height: 20vh;
     padding: 20px;
     overflow: hidden;
   }
@@ -26,7 +26,7 @@
     background-image: url('/assets/road.svg');
     background-repeat: repeat-x;
     background-position: center bottom;
-    height: 100%;
+    height: 10vh;
     width: 300vw;
     z-index: 0;
     overflow: hidden;

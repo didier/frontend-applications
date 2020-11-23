@@ -11,7 +11,7 @@
   .car {
     animation-play-state: paused;
     transform: translate(0, 0);
-    max-width: 20vmax;
+    max-width: 20vh;
   }
 
   .car.is-driving {

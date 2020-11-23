@@ -1,5 +1,5 @@
 <script>
-  import Container from '../meta/Container.svelte'
+  export let center = false
 </script>
 
 <style lang="scss">
@@ -8,14 +8,20 @@
     --px: var(--step-2);
     --py: 0;
     padding: var(--py) var(--px);
+    width: 100vw;
 
     :global(*) {
-      max-width: 100vw;
-      width: calc(var(--width) - var(--px) * 2);
+      max-width: calc(65 * 1rem);
+      // width: calc(var(--width) - var(--px) * 2);
     }
+  }
+
+  .center {
+    display: grid;
+    place-items: center;
   }
 </style>
 
-<div>
+<div class:center>
   <slot>Hello world</slot>
 </div>

@@ -45,7 +45,7 @@ export default async function cleanData() {
       return { ...entry, ...tarief }
     })
     .map(entry => ({
-      ...entry,
+      // ...entry,
       wheelchairAccessible: Boolean(+entry.disabledaccess),
       parkingCapacity: +entry.capacity,
       chargingPointCapacity: +entry.chargingpointcapacity,

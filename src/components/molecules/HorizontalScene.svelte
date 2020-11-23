@@ -22,7 +22,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 20vh 0;
+    padding: 10vh 0;
+    height: 100vh;
 
     /* For every 1px srolled, translate by -1px */
     transform: translate3d(var(--scroll), 0, 0);
