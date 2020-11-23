@@ -6,9 +6,9 @@
   import TextElement from '../atoms/TextElement.svelte'
   import Visualisation from '../molecules/Visualisation.svelte'
   import ScrollIndicator from '../atoms/ScrollIndicator.svelte'
+  import Garage from '../atoms/Garage.svelte'
 </script>
 
-<RoadScene />
 <HorizontalScene>
   <TextElement>
     <h1>
@@ -35,10 +35,13 @@
     <Visualisation />
     <br />
     <h3>
-      This illustration of a garage indicates a parking location. This can be a
-      garage, a mall, spots on the street, and so forth.
+      This illustration of a garage indicates a parking location. These
+      locations can be garages, malls, spots on the street, and so forth.
     </h3>
   </TextElement>
+  <Visualisation />
+  <Garage />
 </HorizontalScene>
+<RoadScene />
 
 <Scroll />

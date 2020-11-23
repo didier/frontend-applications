@@ -1,5 +1,5 @@
 <script>
-  export let data
+  // export let data
 
   const shade = '#ccc'
   const bright = '#f2f2f2'

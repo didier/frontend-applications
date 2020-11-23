@@ -55,6 +55,7 @@ h1,
   margin-top: 0;
   font-size: var(--step-4);
   font-weight: 700;
+  line-height: 1.25;
 }
 
 h2,
