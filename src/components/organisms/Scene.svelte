@@ -8,6 +8,7 @@
   import ScrollIndicator from '../atoms/ScrollIndicator.svelte'
 </script>
 
+<RoadScene />
 <HorizontalScene>
   <TextElement>
     <h1>
@@ -38,11 +39,6 @@
       garage, a mall, spots on the street, and so forth.
     </h3>
   </TextElement>
-  <!-- {#each [...Array(100)] as _}
-    <Placeholder />
-  {/each} -->
 </HorizontalScene>
 
 <Scroll />
-
-<RoadScene />
