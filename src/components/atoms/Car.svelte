@@ -15,7 +15,7 @@
   }
 
   .car.is-driving {
-    animation: bobble 2s ease-in-out infinite alternate;
+    animation: bobble 2s var(--ease) infinite alternate;
     animation-play-state: paused;
     animation-delay: var(--delay);
   }
@@ -31,12 +31,7 @@
 </style>
 
 <div class="car" class:is-driving={isDriving} {style}>
-  <svg
-    viewBox="0 0 244 143"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    style="transform: translateX(var(--scroll))"
-  >
+  <svg viewBox="0 0 244 143" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M30.4381 114.179H1.01013V118.85H30.4381V114.179Z"
       fill={secondaryColor}
