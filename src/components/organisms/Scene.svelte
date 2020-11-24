@@ -1,12 +1,11 @@
 <script>
-  import Scroll from '../atoms/Scroll.svelte'
-  import Placeholder from '../meta/Placeholder.svelte'
-  import HorizontalScene from '../molecules/HorizontalScene.svelte'
-  import RoadScene from '../molecules/RoadScene.svelte'
-  import TextElement from '../atoms/TextElement.svelte'
-  import Visualisation from '../molecules/Visualisation.svelte'
-  import ScrollIndicator from '../atoms/ScrollIndicator.svelte'
-  import Garage from '../atoms/Garage.svelte'
+  import Scroll from '/src/components/atoms/Scroll.svelte'
+  import HorizontalScene from '/src/components/molecules/HorizontalScene.svelte'
+  import RoadScene from '/src/components/molecules/RoadScene.svelte'
+  import TextElement from '/src/components/atoms/TextElement.svelte'
+  import Visualisation from '/src/components/molecules/Visualisation.svelte'
+  import ScrollIndicator from '/src/components/atoms/ScrollIndicator.svelte'
+  import Garage from '/src/components/atoms/Garage.svelte'
 </script>
 
 <HorizontalScene>
@@ -32,16 +31,24 @@
     <ScrollIndicator />
   </TextElement>
   <TextElement center>
-    <Visualisation />
+    <Garage />
     <br />
     <h3>
       This illustration of a garage indicates a parking location. These
       locations can be garages, malls, spots on the street, and so forth.
     </h3>
   </TextElement>
-  <Visualisation />
+  <TextElement>
+    <p>
+      This website uses data from the RDW, and compresses it to a limited set of
+      parking locations of which both tariff and location data was available.
+    </p>
+  </TextElement>
   <Garage />
+  <TextElement>
+    <Visualisation />
+  </TextElement>
 </HorizontalScene>
-<RoadScene />
 
+<RoadScene />
 <Scroll />
