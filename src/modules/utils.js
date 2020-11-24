@@ -79,3 +79,18 @@ export function checkIfDataExistsInLocalStorage() {
 export function storeDataToLocalStorage(data) {
   window.localStorage.setItem('data', data)
 }
+/**
+ * Holds a tally of requested properties of objects in an array.
+ *
+ * @param {*} tally - Tally of the property
+ * @param {*} property - Property to count
+ * @returns Object with the counted values
+ */
+export function countItemsInArray(tally, property) {
+  if (!tally[property]) {
+    tally[property] = 1
+  } else {
+    tally[property] = tally[property] + 1
+  }
+  return tally
+}
