@@ -28,6 +28,10 @@
       each other.
     </p>
     <p>Let's establish some things first.</p>
+    <p>
+      This website uses data from the RDW, and compresses it to a limited set of
+      parking locations of which both tariff and location data was available.
+    </p>
     <ScrollIndicator />
   </TextElement>
   <TextElement center>
@@ -38,16 +42,13 @@
       locations can be garages, malls, spots on the street, and so forth.
     </h3>
   </TextElement>
-  <TextElement>
-    <p>
-      This website uses data from the RDW, and compresses it to a limited set of
-      parking locations of which both tariff and location data was available.
-    </p>
-  </TextElement>
   <Garage />
   <TextElement>
-    <Visualisation />
+    <Visualisation type="bar" />
   </TextElement>
+  <!-- <TextElement> -->
+  <!-- <Visualisation type="map" /> -->
+  <!-- </TextElement> -->
 </HorizontalScene>
 
 <RoadScene />
