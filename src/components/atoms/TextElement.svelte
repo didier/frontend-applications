@@ -10,9 +10,8 @@
     padding: var(--py) var(--px);
     width: 100vw;
 
-    :global(*) {
+    > :global(*) {
       max-width: calc(65 * 1rem);
-      // width: calc(var(--width) - var(--px) * 2);
     }
   }
 
