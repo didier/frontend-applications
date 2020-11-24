@@ -1,9 +1,9 @@
 <script>
   // export let data
 
-  const shade = '#ccc'
-  const bright = '#f2f2f2'
-  const window = '#3F3D56'
+  const shade = 'var(--gray-300)'
+  const bright = 'var(--gray-100)'
+  const window = 'var(--blueGray-700)'
 
   const size = '40vh'
 </script>

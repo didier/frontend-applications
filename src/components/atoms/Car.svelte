@@ -1,7 +1,7 @@
 <script>
-  export let primaryColor = 'red'
-  export let secondaryColor = 'currentColor'
-  export let tertiaryColor = '#cccccc'
+  export let primaryColor = 'var(--red-600)'
+  export let secondaryColor = 'var(--gray-900)'
+  export let tertiaryColor = 'var(--blueGray-200)'
 
   export let isDriving = false
   export let style = ''
@@ -15,18 +15,19 @@
   }
 
   .car.is-driving {
-    animation: bobble 2s var(--ease) infinite alternate;
+    animation: bobble 2s var(--ease-out) infinite alternate;
     animation-play-state: paused;
-    animation-delay: var(--delay);
+    animation-delay: calc(var(--scroll) * -1ms);
+    transform: translateX(var(--scroll));
   }
 
   @keyframes bobble {
-    0% {
+    /* 0% {
       transform: translate(var(--scroll), 0%);
     }
     100% {
-      transform: translate(var(--scroll), -1%) rotate(-1deg);
-    }
+      transform: translateX(var(--scroll));
+    } */
   }
 </style>
 
