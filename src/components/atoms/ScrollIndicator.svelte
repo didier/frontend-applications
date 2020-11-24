@@ -11,9 +11,6 @@
 </script>
 
 <style>
-  span {
-    /* color: ; */
-  }
   .arrow {
     display: inline-block;
     animation: fadeInRight 1s var(--ease) infinite;
@@ -33,10 +30,6 @@
       opacity: 0;
       transform: translateX(0.5em);
     }
-  }
-
-  div {
-    display: inline-flex;
   }
 </style>
 
