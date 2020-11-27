@@ -1,5 +1,7 @@
 <script>
+  // props
   export let center = false
+
   let width
   let height
 </script>

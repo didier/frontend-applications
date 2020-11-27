@@ -1,7 +1,11 @@
 <script>
+  // Lifecycle
   import { onMount } from 'svelte'
 
+  // Utils
   import { fade } from 'svelte/transition'
+
+  // Store
   import { scrollY } from '../meta/store'
 
   let isMounted = false

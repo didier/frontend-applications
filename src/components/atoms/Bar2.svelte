@@ -1,8 +1,11 @@
 <script>
+  // Packages
   import { select, scaleLinear, scaleBand, max, axisLeft, axisBottom } from 'd3'
-  import * as d3 from 'd3'
+
+  // Lifecycle
   import { onMount } from 'svelte'
-  import { countItemsInArray, groupBy } from '/src/modules/utils.js'
+
+  // Utils
   import { locationCostData } from '/src/modules/data.js'
   import { getAxisValues } from '/src/modules/chart-utils.js'
 
@@ -87,6 +90,7 @@
 
     setTimeout(() => update(data), 1000)
   }
+
   onMount(() => render(costData))
 </script>
 
@@ -100,7 +104,7 @@
       fill: var(--teal-500);
     }
 
-    :global(:not(.cost) .tick) {
+    :global(.tick) {
       color: var(--gray-400);
       font-size: 1rem;
 

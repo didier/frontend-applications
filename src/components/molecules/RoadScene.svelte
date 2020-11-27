@@ -6,7 +6,6 @@
   // Components
   import Background from '../atoms/Background.svelte'
   import Car from '../atoms/Car.svelte'
-  import Credits from '../meta/Credits.svelte'
 
   // Props
   let innerWidth
@@ -55,9 +54,7 @@
 <div class="road-scene" style="--delay: -{$scrollY}ms; --scroll: -{$scrollY}px">
   <div class="road" class:is-scrolling={isDriving} />
   <Background {isDriving} />
-  <slot>
-    <!-- optional fallback -->
-  </slot>
+  <slot />
   <Car
     {isDriving}
     style="--delay: -{$scrollY}ms; --scroll: {scale($scrollY)}vw"

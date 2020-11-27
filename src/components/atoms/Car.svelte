@@ -1,4 +1,5 @@
 <script>
+  // Props
   export let primaryColor = 'var(--red-600)'
   export let secondaryColor = 'var(--gray-900)'
   export let tertiaryColor = 'var(--blueGray-200)'
@@ -15,11 +16,6 @@
 
   .car.is-driving {
     transform: translate3d(var(--scroll), 0, 0);
-    /* trans */
-    /* animation: bobble 12s var(--ease-out) infinite alternate;
-    animation-play-state: paused;
-    animation-delay: var(--delay); */
-    /* transform: translateX(var(--scroll)); */
   }
 
   @keyframes bobble {

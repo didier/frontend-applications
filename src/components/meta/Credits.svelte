@@ -19,7 +19,6 @@
       parking locations of which both tariff and location data was available.
     </p>
     <h5 class="h3">Sources</h5>
-    <!-- <p> -->
     <ul>
       <li>
         <a
@@ -52,6 +51,5 @@
     <small>&copy;
       <a href="https://didiercatz.com">Didier Catz</a>,
       {new Date().getFullYear()}</small>
-    <!-- </p> -->
   </TextElement>
 </div>

@@ -1,6 +1,11 @@
 <script>
+  // Packages
   import { select, scaleLinear, scaleBand, max, axisLeft, axisBottom } from 'd3'
+
+  // Lifecycle
   import { onMount } from 'svelte'
+
+  // Utils
   import { countItemsInArray } from '/src/modules/utils.js'
   import { getAxisValues } from '/src/modules/chart-utils.js'
 
@@ -11,7 +16,7 @@
 
   let svg
 
-  // Setup MARGINs for the visualisation
+  // Setup margins for the visualisation
   const CONFIG = {
     MARGIN: {
       TOP: 0,
@@ -24,9 +29,11 @@
   const percentAccessible = data
     .map((entry) => entry.wheelchairAccessible)
     .reduce(countItemsInArray, {})
+
   $: inaccessibleAmount = (
     percentAccessible.false / percentAccessible.true
   ).toFixed(0)
+
   const percentAccessibleArray = [
     {
       label: 'Accessible',
@@ -56,11 +63,13 @@
         'transform',
         `translate(${CONFIG.MARGIN.LEFT}, ${CONFIG.MARGIN.TOP})`
       )
+
     const [xValue, yValue] = getAxisValues('amount', 'label')
 
     const xScale = scaleLinear()
       .domain([0, max(data, xValue)])
       .range([0, innerWidth])
+
     const yScale = scaleBand()
       .domain(data.map(yValue))
       .range([0, innerHeight])
@@ -75,6 +84,7 @@
     const xAxis = axisBottom(xScale)
 
     g.append('g').call(xAxis).attr('transform', `translate(0, ${innerHeight})`)
+
     function update(data) {
       g.selectAll('rect')
         .data(data)
@@ -105,10 +115,12 @@
     width: 100vw;
     height: 30vh;
     margin: 2rem 0;
+
     :global(rect) {
       fill: var(--color);
       border-radius: 10px;
     }
+
     :global(.tick) {
       color: var(--gray-400);
       font-size: 1rem;
@@ -117,12 +129,10 @@
         stroke: var(--gray-300);
       }
     }
+
     :global(text) {
       color: var(--gray-900);
     }
-  }
-
-  svg {
   }
 </style>
 

@@ -7,7 +7,6 @@
   const data = cleanData()
 
   let width
-  let height
 </script>
 
 {#await data}

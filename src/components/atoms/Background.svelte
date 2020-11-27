@@ -1,5 +1,4 @@
 <script>
-  import { scrollY } from '../meta/store'
   export let isDriving
 </script>
 
