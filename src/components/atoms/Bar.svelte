@@ -121,7 +121,8 @@
     }
 
     :global(.tick) {
-      color: var(--gray-400);
+      // color: var(--gray-500);
+      // color: var(--gray-900);
       font-size: 1rem;
 
       :global(line, .domain) {
@@ -130,7 +131,7 @@
     }
 
     :global(text) {
-      color: var(--gray-900);
+      color: currentColor;
     }
   }
 </style>

@@ -114,7 +114,7 @@
     }
 
     :global(text) {
-      color: var(--gray-900);
+      color: currentColor;
     }
 
     :not(.cost) .tick text {

@@ -113,5 +113,12 @@
     <TextElement>
       <Visualisation type="bar2" />
     </TextElement>
+    <TextElement>
+      <h4 class="h2">
+        As it turns out, paying more for parking does not guarantee more
+        convenience. For one, most parking locations don't have electric vehicle
+        charging points.
+      </h4>
+    </TextElement>
   </HorizontalScene>
 </RoadScene>

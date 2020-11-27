@@ -20,6 +20,12 @@
     opacity: 0.1;
   }
 
+  @media screen and (prefers-color-scheme: dark) {
+    .background {
+      filter: hue-rotate(320deg);
+    }
+  }
+
   .is-scrolling {
     animation-delay: var(--delay);
   }

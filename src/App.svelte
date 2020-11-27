@@ -4,7 +4,6 @@
 
 <style>
   :global(body) {
-    background: var(--blue-100);
   }
 </style>
 
