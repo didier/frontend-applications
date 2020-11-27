@@ -88,12 +88,15 @@ export function locationCostData({ data, isSorted = false }) {
       })
       .map(entry => {
         const tariffs = entry.data.map(entry => entry.hourlyCost)
+        const chargingPoints = entry.data.map(entry => entry.chargingPointCapacity)
         return {
           area: entry.location,
-          averageHourlyCost: average(tariffs)
+          averageHourlyCost: average(tariffs),
+          averageChargingPoints: average(chargingPoints).toFixed(0) || 0
         }
       })
       .filter(entry => entry.averageHourlyCost > 0)
+      .filter((_, index) => index < 20)
 
   if (isSorted) {
     return groupedByLocationArray.sort((a, b ) => a.averageHourlyCost - b.averageHourlyCost)

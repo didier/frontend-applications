@@ -14,22 +14,27 @@
   export let height
   export let data
 
+  let tooltip = 'test'
   let svg
   let div
+  let value = 'averageHourlyCost'
 
+  let pageX
+  let pageY
   // Setup MARGINs for the visualisation
   const CONFIG = {
     MARGIN: {
       TOP: 0,
       RIGHT: 0,
-      BOTTOM: 24,
+      BOTTOM: 44,
       LEFT: 150,
     },
   }
 
   const costData = locationCostData({ data: data, isSorted: true })
 
-  const render = (data) => {
+  $: render = (data, value) => {
+    console.log(data)
     /*
      * Select the instance of the svg element using d3.select.
      *
@@ -48,7 +53,7 @@
         `translate(${CONFIG.MARGIN.LEFT}, ${CONFIG.MARGIN.TOP})`
       )
 
-    const xProperty = 'averageHourlyCost'
+    const xProperty = value
     const yProperty = 'area'
 
     const [xValue, yValue] = getAxisValues(xProperty, yProperty)
@@ -60,7 +65,7 @@
     const yScale = scaleBand()
       .domain(data.map(yValue))
       .range([0, innerHeight])
-      .padding(0)
+      .padding(0.1)
 
     // Append the axes (xScale, yScale) to new group elements
     g.append('g')
@@ -80,6 +85,10 @@
         .data(data)
         .enter()
         .append('rect')
+        .on('mouseover', (d) => {
+          tooltip = d
+          console.log(d)
+        })
         .attr('y', (d) => yScale(d[yProperty]))
         .attr('height', yScale.bandwidth())
         .attr('rx', 4)
@@ -91,11 +100,12 @@
     setTimeout(() => update(data), 1000)
   }
 
-  onMount(() => render(costData))
+  $: render(costData, value)
 </script>
 
 <style lang="scss">
   div {
+    position: relative;
     svg {
       height: 70vh;
     }
@@ -122,8 +132,55 @@
       transform: rotate(0.125turn);
     }
   }
+
+  h4 {
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    width: 100%;
+    text-align: right;
+  }
+
+  select {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 20ch;
+    // appearance: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 1rem;
+  }
+
+  .tooltip {
+    position: absolute;
+    // left: var(--x);
+    // top: var(--y);
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    transform: translate(var(--x), var(--y));
+  }
 </style>
 
 <div bind:clientWidth={width} bind:clientHeight={height} bind:this={div}>
-  <svg bind:this={svg} {width} {height} />
+  <select bind:value>
+    <option value="averageChargingCapacity">Charging points</option>
+    <option value="averageHourlyCost">Hourly cost</option>
+  </select>
+  {#if value === 'averageChargingCapacity'}
+    <svg bind:this={svg} {width} {height} />
+    <h4>Amount of charging points, <br /> measured by city averages.</h4>
+  {/if}
+  {#if value === 'averageHourlyCost'}
+    <svg bind:this={svg} {width} {height} />
+    <h4>Parking price in €/hour, <br /> measured by city averages.</h4>
+  {/if}
 </div>
+<div class="tooltip" style="--x: {pageX}px; --y: {pageY}px">{tooltip}</div>
+
+<svelte:body
+  on:mousemove={(e) => {
+    pageX = e.clientX
+    pageY = e.clientY
+  }} />
