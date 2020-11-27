@@ -46,9 +46,6 @@
       </h3>
     </TextElement>
 
-    <TextElement />
-
-    <!-- <Garage /> -->
     <TextElement let:width>
       <Visualisation type="bar" {width} />
     </TextElement>
