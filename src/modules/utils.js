@@ -65,7 +65,6 @@ export function sortBy(array, property) {
 export function getData(urls) {
   const promises = urls.map(url => fetch(url).then(res => res.json()))
   return Promise.all(promises).then(values => {
-    console.log(values)
     return values
   })
 }
@@ -122,7 +121,6 @@ export function groupBy(data, key) {
 
 
 export function getLocationFromDescription(description) {
-  console.log(description)
   const cleanDescription = `${description}`.replace('(Ziekenhuis)', '')
   const location = cleanDescription.toLowerCase().slice(0, -1).split('(')[1]
   const capitalizedLocation = toTitleCase(location)
