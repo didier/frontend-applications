@@ -12,7 +12,6 @@
 
 <style lang="scss">
   div {
-    --scroll: 0px;
     overflow: visible;
     white-space: nowrap;
     position: fixed;
@@ -22,7 +21,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 10vh 0;
+    padding: 20vh 0 var(--road-offset) 0;
     height: 100vh;
 
     /* For every 1px srolled, translate by -1px */
@@ -37,10 +36,6 @@
 
 <svelte:window on:resize={setWidth} on:load={setWidth} />
 
-<div
-  bind:this={scene}
-  class="horizonal-scene"
-  style="--scroll: -{$scrollY}px; --column-gap: 0px;"
->
+<div bind:this={scene} class="horizonal-scene">
   <slot />
 </div>

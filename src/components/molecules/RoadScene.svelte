@@ -1,25 +1,35 @@
 <script>
-  import Car from '../atoms/Car.svelte'
-
-  export let isDriving = false
-
+  // Imports
+  import { scaleLinear } from 'd3'
   import { horizontalScrollWidth, scrollY } from '../meta/store'
 
+  // Components
+  import Background from '../atoms/Background.svelte'
+  import Car from '../atoms/Car.svelte'
+  import Credits from '../meta/Credits.svelte'
+
+  // Props
+  let innerWidth
+
+  // Reactive statements
   $: isDriving = $scrollY !== 0
+
+  // Use D3 to map the to scrolled amount to [0, 100]
+  $: scale = scaleLinear().domain([0, $horizontalScrollWidth]).range([0, 100])
 </script>
 
 <style>
   .road-scene {
+    --road-offset: 5vh;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100vw;
-    height: 20vh;
-    padding: 20px;
-    /* overflow-x: hidden; */
+    padding: var(--step-0);
   }
 
   .road {
+    --width: 920px;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -27,51 +37,29 @@
     background-repeat: repeat-x;
     background-position: center bottom;
     background-size: contain;
-    height: 10vh;
-    width: 300vw;
+    height: var(--road-offset);
+    width: calc(6 * var(--width));
     z-index: 0;
     overflow: hidden;
     animation: slide 5s linear infinite;
     animation-play-state: paused;
   }
 
-  .background {
-    height: 30vh;
-    position: absolute;
-    bottom: 10vh;
-    width: 300vw;
-    left: 0;
-    /* overflow: visible; */
-    background-repeat: repeat-x;
-    background-image: url('/assets/background.svg');
-    /* background-size: 100%; */
-    animation: slide 10s linear infinite;
-    animation-play-state: paused;
-    z-index: -1;
-    opacity: 0.3;
-  }
-
   .is-scrolling {
     animation-delay: var(--delay);
   }
-
-  @keyframes slide {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(-160vw, 0, 0);
-    }
-  }
 </style>
 
-<svelte:window bind:scrollY={$scrollY} />
+<svelte:window bind:scrollY={$scrollY} bind:innerWidth />
 
-<div
-  class="road-scene"
-  style="--delay: -{$scrollY}ms; --scroll: {($horizontalScrollWidth / ($horizontalScrollWidth - $scrollY)) * 100 - 100}%"
->
+<div class="road-scene" style="--delay: -{$scrollY}ms; --scroll: -{$scrollY}px">
   <div class="road" class:is-scrolling={isDriving} />
-  <div class="background" class:is-scrolling={isDriving} />
-  <Car {isDriving} style="--delay: -{$scrollY}ms" />
+  <Background {isDriving} />
+  <slot>
+    <!-- optional fallback -->
+  </slot>
+  <Car
+    {isDriving}
+    style="--delay: -{$scrollY}ms; --scroll: {scale($scrollY)}vw"
+  />
 </div>

@@ -11,6 +11,7 @@
 
 html {
   --offset: 12px;
+  /* font-size: 14px; */
 }
 
 body {
@@ -406,4 +407,29 @@ small,
 
 .gap > * {
   margin: calc(var(--row-gap)) 0 0 calc(var(--column-gap));
+}
+
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(-1 * var(--width)), 0, 0);
+  }
+}
+
+a,
+a:visited {
+  color: var(--teal-500);
+  font-weight: 700;
+}
+
+ul {
+  font-size: var(--step--1);
+  padding-left: 2ch;
+}
+
+small,
+small * {
+  color: var(--gray-400);
 }

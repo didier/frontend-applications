@@ -9,25 +9,26 @@
 
 <style>
   .car {
-    animation-play-state: paused;
     transform: translate(0, 0);
-    max-width: 20vh;
+    max-width: 10vh;
   }
 
   .car.is-driving {
-    animation: bobble 2s var(--ease-out) infinite alternate;
+    transform: translate3d(var(--scroll), 0, 0);
+    /* trans */
+    /* animation: bobble 12s var(--ease-out) infinite alternate;
     animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -1ms);
-    transform: translateX(var(--scroll));
+    animation-delay: var(--delay); */
+    /* transform: translateX(var(--scroll)); */
   }
 
   @keyframes bobble {
-    /* 0% {
-      transform: translate(var(--scroll), 0%);
+    0% {
+      transform: translate3d(0, 0, 0);
     }
     100% {
-      transform: translateX(var(--scroll));
-    } */
+      transform: translate3d(100vh, 0, 0);
+    }
   }
 </style>
 

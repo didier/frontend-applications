@@ -1,11 +1,9 @@
 <script>
-  // export let data
-
   const shade = 'var(--gray-300)'
   const bright = 'var(--gray-100)'
   const window = 'var(--blueGray-700)'
 
-  const size = '40vh'
+  const size = '30vh'
 </script>
 
 <style lang="scss">
@@ -14,6 +12,7 @@
     max-height: 100%;
     display: flex;
     align-items: flex-end;
+    position: relative;
   }
 </style>
 

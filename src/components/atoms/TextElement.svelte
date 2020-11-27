@@ -1,5 +1,7 @@
 <script>
   export let center = false
+  let width
+  let height
 </script>
 
 <style lang="scss">
@@ -13,14 +15,18 @@
     > :global(*) {
       max-width: calc(65 * 1rem);
     }
+    display: grid;
   }
 
   .center {
-    display: grid;
     place-items: center;
+    grid-gap: 0;
+    @media screen and (min-width: 65ch) {
+      text-align: center;
+    }
   }
 </style>
 
-<div class:center>
+<div class:center bind:clientWidth={width} bind:clientHeight={height}>
   <slot>Hello world</slot>
 </div>

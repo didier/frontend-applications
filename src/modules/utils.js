@@ -94,3 +94,46 @@ export function countItemsInArray(tally, property) {
   }
   return tally
 }
+
+/**
+ * Groups objects by a specified key
+ *
+ * @author Rob Mathers https://github.com/robmathers
+ * @source https://gist.github.com/robmathers/1830ce09695f759bf2c4df15c29dd22d
+ * @param {*} data an array of objects
+ * @param {*} key the key to group by
+ * @returns
+ */
+export function groupBy(data, key) {
+  return data.reduce((storage, item) => {
+    // Get the first instance of the key by which we're grouping
+    const group = item[key]
+
+    // set `storage` for this instance of group to the outer scope (if not empty) or initialize it
+    storage[group] = storage[group] || []
+
+    // add this item to its group within `storage`
+    storage[group].push(item)
+
+    // return the updated storage to the reduce function, which will then loop through the next
+    return storage
+  }, {})
+}
+
+
+export function getLocationFromDescription(description) {
+  console.log(description)
+  const cleanDescription = `${description}`.replace('(Ziekenhuis)', '')
+  const location = cleanDescription.toLowerCase().slice(0, -1).split('(')[1]
+  const capitalizedLocation = toTitleCase(location)
+  return capitalizedLocation
+}
+
+export function average(numbers) {
+  return numbers.reduce((a, b) => (a + b)) / numbers.length
+}
+
+export function toTitleCase(string) {
+  return `${string}`.replace(/\w\S*/g, (substring) =>
+    substring.charAt(0).toUpperCase() + substring.substr(1).toLowerCase())
+}

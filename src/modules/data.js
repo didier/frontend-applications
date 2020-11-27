@@ -2,7 +2,10 @@
 import {
   getData,
   checkIfDataExistsInLocalStorage,
-  storeDataToLocalStorage
+  storeDataToLocalStorage,
+  getLocationFromDescription,
+  groupBy,
+  average
 } from './utils'
 
 // Constants
@@ -18,7 +21,7 @@ export default async function cleanData() {
   const hasData = checkIfDataExistsInLocalStorage()
 
   // A. Get data from localStorage, and return early
-  if (hasData) {
+  if (hasData && process.env.NODE_ENV !== 'development') {
     return JSON.parse(window.localStorage.getItem('data'))
   }
 
@@ -51,13 +54,13 @@ export default async function cleanData() {
       chargingPointCapacity: +entry.chargingpointcapacity,
 
       // Cost of parking for one hour.
-      hourlyCost: (entry.amountfarepart / entry.stepsizefarepart) * 60,
+      hourlyCost: entry.amountfarepart / entry.stepsizefarepart * 60 + 0,
 
       // The area ID of the parking zone.
       areaManagerId: +entry.areamanagerid,
       areaId: entry.areaid,
       description: entry.areadesc,
-
+      area: getLocationFromDescription(entry.areadesc),
       location: {
         latitude: +entry.location.latitude,
         longitude: +entry.location.longitude,
@@ -69,4 +72,30 @@ export default async function cleanData() {
 
   // Return ✨utterly pristine✨ data
   return mergedData
+}
+
+export function locationCostData({ data, isSorted = false }) {
+  const groupedByLocation = groupBy(data, 'area')
+  const groupedByLocationArray =
+    Object.entries(groupedByLocation)
+      .filter(entry => entry[0] !== undefined || 'undefined')
+      .map(entry => {
+        return {
+          location: entry[0],
+          data: entry[1]
+        }
+      })
+      .map(entry => {
+        const tariffs = entry.data.map(entry => entry.hourlyCost)
+        return {
+          area: entry.location,
+          averageHourlyCost: average(tariffs)
+        }
+      })
+      .filter(entry => entry.averageHourlyCost > 0)
+
+  if (isSorted) {
+    return groupedByLocationArray.sort((a, b ) => a.averageHourlyCost - b.averageHourlyCost)
+  }
+  return groupedByLocationArray
 }

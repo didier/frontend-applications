@@ -1,7 +1,9 @@
 <script>
   import { select, scaleLinear, scaleBand, max, axisLeft, axisBottom } from 'd3'
+  import * as d3 from 'd3'
   import { onMount } from 'svelte'
-  import { countItemsInArray } from '/src/modules/utils.js'
+  import { countItemsInArray, groupBy } from '/src/modules/utils.js'
+  import { locationCostData } from '/src/modules/data.js'
   import { getAxisValues } from '/src/modules/chart-utils.js'
 
   // Props
@@ -10,6 +12,7 @@
   export let data
 
   let svg
+  let div
 
   // Setup MARGINs for the visualisation
   const CONFIG = {
@@ -17,26 +20,11 @@
       TOP: 0,
       RIGHT: 0,
       BOTTOM: 24,
-      LEFT: 100,
+      LEFT: 150,
     },
   }
 
-  const percentAccessible = data
-    .map((entry) => entry.wheelchairAccessible)
-    .reduce(countItemsInArray, {})
-  $: inaccessibleAmount = (
-    percentAccessible.false / percentAccessible.true
-  ).toFixed(0)
-  const percentAccessibleArray = [
-    {
-      label: 'Accessible',
-      amount: percentAccessible.true,
-    },
-    {
-      label: 'Inaccessible',
-      amount: percentAccessible.false,
-    },
-  ]
+  const costData = locationCostData({ data: data, isSorted: true })
 
   const render = (data) => {
     /*
@@ -56,15 +44,20 @@
         'transform',
         `translate(${CONFIG.MARGIN.LEFT}, ${CONFIG.MARGIN.TOP})`
       )
-    const [xValue, yValue] = getAxisValues('amount', 'label')
+
+    const xProperty = 'averageHourlyCost'
+    const yProperty = 'area'
+
+    const [xValue, yValue] = getAxisValues(xProperty, yProperty)
 
     const xScale = scaleLinear()
       .domain([0, max(data, xValue)])
       .range([0, innerWidth])
+
     const yScale = scaleBand()
       .domain(data.map(yValue))
       .range([0, innerHeight])
-      .padding(0.2)
+      .padding(0)
 
     // Append the axes (xScale, yScale) to new group elements
     g.append('g')
@@ -74,42 +67,40 @@
 
     const xAxis = axisBottom(xScale)
 
-    g.append('g').call(xAxis).attr('transform', `translate(0, ${innerHeight})`)
+    g.append('g')
+      .call(xAxis)
+      .attr('transform', `translate(0, ${innerHeight})`)
+      .attr('class', 'cost')
+
     function update(data) {
       g.selectAll('rect')
         .data(data)
         .enter()
         .append('rect')
-        .attr('y', (d) => yScale(d.label))
+        .attr('y', (d) => yScale(d[yProperty]))
         .attr('height', yScale.bandwidth())
+        .attr('rx', 4)
         .transition()
-        .attr('width', (d) => xScale(d.amount))
+        .attr('width', (d) => xScale(d[xProperty]))
         .duration(1000)
-        .attr('rx', 8)
-        .attr(
-          'style',
-          (d) =>
-            `--color: ${
-              d.label === 'Accessible' ? 'var(--green-500)' : 'var(--red-500)'
-            }`
-        )
     }
 
     setTimeout(() => update(data), 1000)
   }
-  onMount(() => render(percentAccessibleArray))
+  onMount(() => render(costData))
 </script>
 
 <style lang="scss">
   div {
-    width: 100vw;
-    height: 30vh;
-    margin: 2rem 0;
-    :global(rect) {
-      fill: var(--color);
-      border-radius: 10px;
+    svg {
+      height: 70vh;
     }
-    :global(.tick) {
+
+    :global(rect) {
+      fill: var(--teal-500);
+    }
+
+    :global(:not(.cost) .tick) {
       color: var(--gray-400);
       font-size: 1rem;
 
@@ -117,24 +108,18 @@
         stroke: var(--gray-300);
       }
     }
+
     :global(text) {
       color: var(--gray-900);
     }
-  }
 
-  svg {
+    :not(.cost) .tick text {
+      font-size: 0.4rem;
+      transform: rotate(0.125turn);
+    }
   }
 </style>
 
-<h2>Wheelchair-accessible parking</h2>
-<div bind:clientWidth={width} bind:clientHeight={height}>
+<div bind:clientWidth={width} bind:clientHeight={height} bind:this={div}>
   <svg bind:this={svg} {width} {height} />
 </div>
-<h>
-  Out of this data, only
-  {percentAccessible.true}
-  out of
-  {percentAccessible.true + percentAccessible.false}
-  parking locations are wheelchair-accessible. That's only about 1 in every
-  {inaccessibleAmount}.
-</h>
