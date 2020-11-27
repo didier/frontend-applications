@@ -40,7 +40,7 @@
     width: calc(6 * var(--width));
     z-index: 0;
     overflow: hidden;
-    animation: slide 5s linear infinite;
+    animation: slide 2.5s linear infinite;
     animation-play-state: paused;
   }
 

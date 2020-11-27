@@ -12,7 +12,7 @@
     width: calc(var(--width) * 3);
     background-repeat: repeat-x;
     background-image: url('/assets/background.svg');
-    animation: slide 10s linear infinite;
+    animation: slide 20s linear infinite;
     animation-play-state: paused;
     background-position: center bottom;
     background-size: contain;

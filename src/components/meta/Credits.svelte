@@ -8,6 +8,8 @@
     height: 100vh;
     display: grid;
     place-items: center;
+    max-width: 65ch;
+    margin: 0 auto;
   }
 </style>
 

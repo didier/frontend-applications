@@ -1,4 +1,10 @@
 <script>
+  // Imports
+  import { onMount } from 'svelte'
+  import { quartOut } from 'svelte/easing'
+  import { fly } from 'svelte/transition'
+
+  // Components
   import Scroll from '/src/components/atoms/Scroll.svelte'
   import HorizontalScene from '/src/components/molecules/HorizontalScene.svelte'
   import RoadScene from '/src/components/molecules/RoadScene.svelte'
@@ -7,27 +13,75 @@
   import ScrollIndicator from '/src/components/atoms/ScrollIndicator.svelte'
   import Garage from '/src/components/atoms/Garage.svelte'
   import Credits from '../meta/Credits.svelte'
+
+  let isHeadlineVisible = false
+  onMount(() => (isHeadlineVisible = true))
+  export let title =
+    '“As a parking spot’s customer price increases, does its convenience increase too?”'
+
+  // Scoped state
+  $: titleArray = title.split(' ')
+
+  // Check if headline animation is done
+  let isTextAnimationDone = false
+
+  function setIsReady(idx) {
+    if (idx + 1 === titleArray.length) {
+      isTextAnimationDone = true
+    }
+  }
 </script>
+
+<style lang="scss">
+  .headline {
+    display: inline-block;
+    line-height: 1.135;
+    margin-bottom: var(--step--1);
+
+    span {
+      display: inline-block;
+    }
+  }
+  .mask {
+    overflow: hidden;
+  }
+</style>
 
 <Scroll />
 <Credits />
 <RoadScene>
   <HorizontalScene>
     <TextElement center>
-      <h1>
-        <q>As a parking spot&CloseCurlyQuote;s customer price increases, does
-          its convenience increase too?</q>
-      </h1>
+      {#if isHeadlineVisible}
+        <h1
+          class="max-w-screen-lg mx-auto my-12 headline lg:text-center md:my-0"
+        >
+          {#each titleArray as word, idx}
+            <!-- {word} -->
+            <span class="mask">
+              <span
+                in:fly={{ y: 64, duration: 1000, delay: 65 * idx + 1000, easing: quartOut }}
+                on:introend={() => setIsReady(idx)}
+              >{word}&nbsp;</span>
+            </span>
+          {/each}
+        </h1>
+      {/if}
 
-      <p>
-        An interactive data visualisation centered around parking in the city.
-      </p>
-      <small>By <a href="https://didiercatz.com">Didier Catz</a></small>
-      <ScrollIndicator />
+      {#if isTextAnimationDone}
+        <p in:fly={{ y: 20 }}>
+          An interactive data visualisation centered around parking in the city.
+        </p>
+        <small in:fly={{ y: 20, delay: 200 }}>
+          By
+          <a href="https://didiercatz.com">Didier Catz</a></small>
+        <ScrollIndicator />
+      {/if}
     </TextElement>
     <TextElement>
       <h2>
-        Who doesn't love looking for parking spots? (Hint: not many people do. )
+        Who doesn&CloseCurlyQuote;t love looking for parking spots? (Hint: not
+        many people do.)
       </h2>
       <p>
         Looking for a place to park can be a real pain. How do you know if there

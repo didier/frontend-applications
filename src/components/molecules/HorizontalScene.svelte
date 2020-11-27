@@ -1,5 +1,5 @@
 <script>
-  import { horizontalScrollWidth, scrollY } from '../meta/store'
+  import { horizontalScrollWidth } from '../meta/store'
 
   // Bind variable `scene` to the DOM reference of the div
   let scene
@@ -36,6 +36,6 @@
 
 <svelte:window on:resize={setWidth} on:load={setWidth} />
 
-<div bind:this={scene} class="horizonal-scene">
+<div bind:this={scene} class="horizonal-scene" style="--column-gap: 20rem;">
   <slot />
 </div>

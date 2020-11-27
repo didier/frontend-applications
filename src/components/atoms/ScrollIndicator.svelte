@@ -3,7 +3,7 @@
   import { onMount } from 'svelte'
 
   // Utils
-  import { fade } from 'svelte/transition'
+  import { fly } from 'svelte/transition'
 
   // Store
   import { scrollY } from '../meta/store'
@@ -46,11 +46,9 @@
   }
 </style>
 
-{#key isMounted}
-  <span in:fade={{ delay: 1000 }}>
-    <slot />
-    <span class="arrow-wrapper" class:horizontal={$scrollY !== 0}>
-      <span class="arrow" aria-label="right"> → </span>
-    </span>
+<span in:fly={{ y: -20, delay: 400 }}>
+  <slot />
+  <span class="arrow-wrapper" class:horizontal={$scrollY !== 0}>
+    <span class="arrow" aria-label="right"> → </span>
   </span>
-{/key}
+</span>
