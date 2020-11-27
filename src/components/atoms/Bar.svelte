@@ -10,9 +10,9 @@
   import { getAxisValues } from '/src/modules/chart-utils.js'
 
   // Props
-  export let width
-  export let height
   export let data
+  let width
+  let height
 
   let svg
 
@@ -112,7 +112,6 @@
 
 <style lang="scss">
   div {
-    width: 100vw;
     height: 30vh;
     margin: 2rem 0;
 
