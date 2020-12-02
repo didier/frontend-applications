@@ -19,12 +19,12 @@ export default async function cleanData() {
 
   // Check if localstorage contains data.
   // TODO: Fix this for Safari.
-  // const hasData = checkIfDataExistsInLocalStorage()
+  const hasData = checkIfDataExistsInLocalStorage()
 
   // A. Get data from localStorage, and return early
-  // if (hasData && process.env.NODE_ENV !== 'development') {
-  //   return JSON.parse(window.localStorage.getItem('data'))
-  // }
+  if (hasData && process.env.NODE_ENV !== 'development') {
+    return JSON.parse(window.localStorage.getItem('data'))
+  }
 
   // B. Fetch data from API
   // Destructure data after all three promises have been resolved

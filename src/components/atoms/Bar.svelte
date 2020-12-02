@@ -140,11 +140,11 @@
 <div bind:clientWidth={width} bind:clientHeight={height}>
   <svg bind:this={svg} {width} {height} />
 </div>
-<h>
+<h3>
   Out of this data, only
   {percentAccessible.true}
   out of
   {percentAccessible.true + percentAccessible.false}
   parking locations are wheelchair-accessible. That's only about 1 in every
   {inaccessibleAmount}.
-</h>
+</h3>
