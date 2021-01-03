@@ -10,6 +10,7 @@
     "d3": "^6.2.0"
   },
   "devDependencies": {
+    "@4mende2/svelte-heroicons": "^1.1.7",
     "eslint": "^7.14.0",
     "eslint-plugin-svelte3": "^2.7.3",
     "prettier": "^2.2.0",

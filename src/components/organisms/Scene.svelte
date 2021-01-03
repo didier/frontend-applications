@@ -3,6 +3,10 @@
   import { onMount } from 'svelte'
   import { quartOut } from 'svelte/easing'
   import { fly } from 'svelte/transition'
+  import { POPULATION } from '/src/modules/constants'
+
+  // Icons
+  import Icon, { currencyEuro, cash } from '@4mende2/svelte-heroicons'
 
   // Components
   import Scroll from '/src/components/atoms/Scroll.svelte'
@@ -99,8 +103,23 @@
         locations can be garages, malls, spots on the street, and so forth.
       </h3>
     </TextElement>
+    <TextElement>
+      <p>
+        In The Netherlands, about 300.000 people are confined to a wheelchair.
+        Taken our population into account, that's about in 1 in every
+        {(POPULATION / 300000).toFixed(0)}
+        people. Let's find out if the ratio of wheelchair-accessible parking
+        spots matches the amount of people that need to use wheelchairs.
+      </p>
+      <p>
+        Of course, the data used is a confined set of data, but it should give a
+        reasonable sample of the actual numbers. Let's take a look, shall we?
+        <ScrollIndicator />
+      </p>
+    </TextElement>
 
     <TextElement let:width>
+      <h4 class="m-0">Wheelchair-accessible parking</h4>
       <Visualisation type="bar" {width} />
     </TextElement>
     <TextElement>
@@ -111,7 +130,20 @@
       </h2>
     </TextElement>
     <TextElement>
+      <!--  <p>
+        This graph shows the average parking price per hour across different
+        cities.
+      </p> -->
       <Visualisation type="bar2" />
+    </TextElement>
+    <TextElement>
+      <h2 class="text-center">
+        <Icon icon={currencyEuro} />
+        <Icon icon={cash} />
+        <br />
+        Let's take the averages of the cheapest and most expensive locations and
+        compare them based on convenience.
+      </h2>
     </TextElement>
     <TextElement>
       <h4 class="h2">

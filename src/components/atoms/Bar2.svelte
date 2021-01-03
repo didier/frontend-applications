@@ -164,10 +164,11 @@
 </style>
 
 <div bind:clientWidth={width} bind:clientHeight={height} bind:this={div}>
-  <select bind:value>
+  <!-- svelte-ignore component-name-lowercase -->
+  <!-- <select bind:value>
     <option value="averageChargingCapacity">Charging points</option>
     <option value="averageHourlyCost">Hourly cost</option>
-  </select>
+  </select> -->
   {#if value === 'averageChargingCapacity'}
     <svg bind:this={svg} {width} {height} />
     <h4>Amount of charging points, <br /> measured by city averages.</h4>
@@ -177,10 +178,3 @@
     <h4>Parking price in €/hour, <br /> measured by city averages.</h4>
   {/if}
 </div>
-<div class="tooltip" style="--x: {pageX}px; --y: {pageY}px">{tooltip}</div>
-
-<svelte:body
-  on:mousemove={(e) => {
-    pageX = e.clientX
-    pageY = e.clientY
-  }} />

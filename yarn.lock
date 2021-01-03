@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@4mende2/svelte-heroicons@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@4mende2/svelte-heroicons/-/svelte-heroicons-1.1.7.tgz#7d202934646f9a73e1f59d4c9bb30cbf43f5a8ee"
+  integrity sha512-ZPHH6Iu3DbMRyC/lwQwdyQu8Bcs4uPmzVGXFnISMTF/yfV8DXkH5qx/gicmoTNN9Wo6k2TtqQ9AsjXzw4BpmjQ==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.4.tgz#168da1a36e90da68ae8d49c0f1b48c7c6249213a"

@@ -136,7 +136,8 @@
   }
 </style>
 
-<h2>Wheelchair-accessible parking</h2>
+<!--
+<h2>Wheelchair-accessible parking</h2> -->
 <div bind:clientWidth={width} bind:clientHeight={height}>
   <svg bind:this={svg} {width} {height} />
 </div>
@@ -145,6 +146,6 @@
   {percentAccessible.true}
   out of
   {percentAccessible.true + percentAccessible.false}
-  parking locations are wheelchair-accessible. That's only about 1 in every
-  {inaccessibleAmount}.
+  parking locations are wheelchair-accessible. That's about 1 in every
+  {inaccessibleAmount}. That matches the necessary amount nicely.
 </h3>
