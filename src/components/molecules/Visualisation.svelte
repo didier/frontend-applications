@@ -1,9 +1,9 @@
 <script>
   import cleanData from '/src/modules/data'
-  import Bar from '../atoms/Bar.svelte'
   import Bar2 from '../atoms/Bar2.svelte'
+  import Wheelchair from '../atoms/Wheelchair.svelte'
 
-  export let type = 'bar'
+  export let type = 'wheelchair'
   const data = cleanData()
 
   let width
@@ -14,8 +14,8 @@
 {#await data}
   <h1>Loading...</h1>
 {:then data}
-  {#if type === 'bar'}
-    <Bar {data} {width} />
+  {#if type === 'wheelchair'}
+    <Wheelchair {data} {width} />
   {:else if type === 'bar2'}
     <!-- <select bind:value>
       <option value="1">1</option>

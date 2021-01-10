@@ -120,7 +120,7 @@
 
     <TextElement let:width>
       <h4 class="m-0">Wheelchair-accessible parking</h4>
-      <Visualisation type="bar" {width} />
+      <Visualisation type="wheelchair" {width} />
     </TextElement>
     <TextElement>
       <h2 class="h1">

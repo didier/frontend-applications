@@ -141,11 +141,14 @@
 <div bind:clientWidth={width} bind:clientHeight={height}>
   <svg bind:this={svg} {width} {height} />
 </div>
-<h3>
-  Out of this data, only
+<h4>
+  Out of this data,
   {percentAccessible.true}
   out of
   {percentAccessible.true + percentAccessible.false}
   parking locations are wheelchair-accessible. That's about 1 in every
-  {inaccessibleAmount}. That matches the necessary amount nicely.
-</h3>
+  {inaccessibleAmount}. That's not enough. Ideally, in every parking location,
+  one in every 57 spots is accessible. Not one in every
+  {inaccessibleAmount}
+  locations.
+</h4>

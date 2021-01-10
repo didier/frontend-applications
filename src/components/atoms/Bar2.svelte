@@ -1,6 +1,14 @@
 <script>
   // Packages
-  import { select, scaleLinear, scaleBand, max, axisLeft, axisBottom } from 'd3'
+  import {
+    select,
+    scaleLinear,
+    scaleBand,
+    max,
+    axisLeft,
+    axisBottom,
+    format,
+  } from 'd3'
 
   // Lifecycle
   import { onMount } from 'svelte'
@@ -19,8 +27,6 @@
   let div
   let value = 'averageHourlyCost'
 
-  let pageX
-  let pageY
   // Setup MARGINs for the visualisation
   const CONFIG = {
     MARGIN: {
@@ -73,7 +79,10 @@
       .selectAll('.domain, .tick line')
       .remove()
 
-    const xAxis = axisBottom(xScale)
+    const xAxis = axisBottom(xScale).tickFormat((d) => {
+      // Add euro sign to clarify axis
+      return '€' + format(',.2f')(d)
+    })
 
     g.append('g')
       .call(xAxis)
