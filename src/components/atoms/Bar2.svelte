@@ -91,10 +91,6 @@
         .data(data)
         .enter()
         .append('rect')
-        // .on('mouseover', (d) => {
-        //   tooltip = d
-        //   console.log(d)
-        // })
         .attr('y', (d) => yScale(d[yProperty]))
         .attr('height', yScale.bandwidth())
         .attr('rx', 4)
@@ -156,25 +152,11 @@
     border-radius: 8px;
     margin: 1rem;
   }
-
-  .tooltip {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 10000;
-    transform: translate(var(--x), var(--y));
-  }
 </style>
 
-<!-- <div bind:clientWidth={width} bind:clientHeight={height} bind:this={div}> -->
-{#key height && value}
+<!-- Re-render the contents on resize to prefent duplicate renders -->
+{#key height}
   <div bind:clientWidth={width} bind:clientHeight={height} bind:this={div}>
-    <!-- Re-render the contents on resize to prefent duplicate renders -->
-    <!-- svelte-ignore component-name-lowercase -->
-    <!-- <select bind:value>
-      <option value="averageChargingCapacity">Charging points</option>
-      <option value="averageHourlyCost">Hourly cost</option>
-    </select> -->
     <svg bind:this={svg} {width} {height} />
     <h4>
       {value === 'averageChargingCapacity' ? 'Amount of charging points' : 'Parking price in €/hour'}<br
