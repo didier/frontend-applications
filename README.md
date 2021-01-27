@@ -5,6 +5,7 @@ By [Didier Catz](https://didiercatz.com)
 <!-- ![Concept sketch](https://user-images.githubusercontent.com/9499859/103037588-7f551900-456c-11eb-8887-1deec9a4496d.png) -->
 
 ![Demo](https://dsc.cloud/9e026c/79IZ6AwZqYWVivSDlHuIxQIP2rGEbcItjZy77Y9tSrbx8ESarW2mdp2mFmWbfFeBLoTn7PCfXJx7ihYDDQ1d3haKOkxy2uHF8q1w.gif)
+
 For this project, a few assumptions will be made. _Convenience_ in this case means how convenient a spot is for the customer — e.g. is it cheap? Are there enough parking spots? Is it easily accessible? _How much comfort does it bring to the customer?_
 
 ![About this project](https://raw.githubusercontent.com/didiercatz/functional-programming/main/src/assets/images/about-this-project.svg)
