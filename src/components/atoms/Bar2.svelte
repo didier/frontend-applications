@@ -10,9 +10,6 @@
     format,
   } from 'd3'
 
-  // Lifecycle
-  import { onMount } from 'svelte'
-
   // Utils
   import { locationCostData } from '/src/modules/data.js'
   import { getAxisValues } from '/src/modules/chart-utils.js'
@@ -40,7 +37,7 @@
   const costData = locationCostData({ data: data, isSorted: true })
 
   $: render = (data, value) => {
-    console.log(data)
+    // console.log(data)
     /*
      * Select the instance of the svg element using d3.select.
      *
@@ -94,10 +91,10 @@
         .data(data)
         .enter()
         .append('rect')
-        .on('mouseover', (d) => {
-          tooltip = d
-          console.log(d)
-        })
+        // .on('mouseover', (d) => {
+        //   tooltip = d
+        //   console.log(d)
+        // })
         .attr('y', (d) => yScale(d[yProperty]))
         .attr('height', yScale.bandwidth())
         .attr('rx', 4)
@@ -155,7 +152,6 @@
     top: 0;
     right: 0;
     max-width: 20ch;
-    // appearance: none;
     padding: 12px 16px;
     border-radius: 8px;
     margin: 1rem;
@@ -163,8 +159,6 @@
 
   .tooltip {
     position: absolute;
-    // left: var(--x);
-    // top: var(--y);
     left: 0;
     top: 0;
     z-index: 10000;
@@ -172,18 +166,20 @@
   }
 </style>
 
-<div bind:clientWidth={width} bind:clientHeight={height} bind:this={div}>
-  <!-- svelte-ignore component-name-lowercase -->
-  <!-- <select bind:value>
-    <option value="averageChargingCapacity">Charging points</option>
-    <option value="averageHourlyCost">Hourly cost</option>
-  </select> -->
-  {#if value === 'averageChargingCapacity'}
+<!-- <div bind:clientWidth={width} bind:clientHeight={height} bind:this={div}> -->
+{#key height && value}
+  <div bind:clientWidth={width} bind:clientHeight={height} bind:this={div}>
+    <!-- Re-render the contents on resize to prefent duplicate renders -->
+    <!-- svelte-ignore component-name-lowercase -->
+    <!-- <select bind:value>
+      <option value="averageChargingCapacity">Charging points</option>
+      <option value="averageHourlyCost">Hourly cost</option>
+    </select> -->
     <svg bind:this={svg} {width} {height} />
-    <h4>Amount of charging points, <br /> measured by city averages.</h4>
-  {/if}
-  {#if value === 'averageHourlyCost'}
-    <svg bind:this={svg} {width} {height} />
-    <h4>Parking price in €/hour, <br /> measured by city averages.</h4>
-  {/if}
-</div>
+    <h4>
+      {value === 'averageChargingCapacity' ? 'Amount of charging points' : 'Parking price in €/hour'}<br
+      />
+      measured by city averages.
+    </h4>
+  </div>
+{/key}

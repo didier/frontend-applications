@@ -5,9 +5,6 @@
   import { fly } from 'svelte/transition'
   import { POPULATION } from '/src/modules/constants'
 
-  // Icons
-  import Icon, { currencyEuro, cash } from '@4mende2/svelte-heroicons'
-
   // Components
   import Scroll from '/src/components/atoms/Scroll.svelte'
   import HorizontalScene from '/src/components/molecules/HorizontalScene.svelte'
@@ -16,7 +13,8 @@
   import Visualisation from '/src/components/molecules/Visualisation.svelte'
   import ScrollIndicator from '/src/components/atoms/ScrollIndicator.svelte'
   import Garage from '/src/components/atoms/Garage.svelte'
-  import Credits from '../meta/Credits.svelte'
+  import Credits from '/src/components/meta/Credits.svelte'
+  import Icon from '/src/components/atoms/Icon.svelte'
 
   let isHeadlineVisible = false
   onMount(() => (isHeadlineVisible = true))
@@ -128,18 +126,18 @@
         convenience.
         <ScrollIndicator />
       </h2>
+      <p>
+        The following graph shows the average parking price per hour across
+        different location.
+      </p>
     </TextElement>
     <TextElement>
-      <!--  <p>
-        This graph shows the average parking price per hour across different
-        cities.
-      </p> -->
       <Visualisation type="bar2" />
     </TextElement>
     <TextElement>
       <h2 class="text-center">
-        <Icon icon={currencyEuro} />
-        <Icon icon={cash} />
+        <Icon icon="currencyEuro" />
+        <Icon icon="cash" />
         <br />
         Let's take the averages of the cheapest and most expensive locations and
         compare them based on convenience.

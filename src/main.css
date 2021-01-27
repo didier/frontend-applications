@@ -12,6 +12,7 @@
 html {
   --offset: 12px;
   /* font-size: 14px; */
+  overflow-x: hidden;
 }
 
 body {
