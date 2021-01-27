@@ -41,13 +41,13 @@ This project assumed you have a valid and stable installation of [Node.js](https
 ### Cloning the repo
 
 ```sh
-git clone https://github.com/didiercatz/frontend-data.git
+git clone https://github.com/didiercatz/frontend-applications.git
 ```
 
 ### Alternatively, if you just want the files:
 
 ```sh
-npx degit didiercatz/frontend-data
+npx degit didiercatz/frontend-applications
 ```
 
 ### Install packages
@@ -62,14 +62,6 @@ Opens a development server at [`http://localhost:3000`](http://localhost:3000)
 
 ```sh
 yarn dev # or npm run dev
-```
-
-## Building a static export
-
-Builds and bundles the files into a static folder at `./dist`
-
-```sh
-yarn build # or npm run build
 ```
 
 ## Sources
@@ -88,6 +80,6 @@ yarn build # or npm run build
 
 ---
 
-💡 _In a few weeks time, this README will consist of a short summary and getting-started guide of this project. If you'd like to get a more comprehensive writeup of what this all entains, please refer to the [wiki](https://github.com/didiercatz/frontend-data/wiki). For now, enjoy this GIF. *With a hard 'G'*._
+💡 _This README consists of a short summary and getting-started guide of this project. If you'd like to get a more comprehensive writeup of what this all entains, please refer to the [wiki](https://github.com/didiercatz/frontend-applications/wiki). For now, enjoy this GIF. *With a hard 'G'*._
 
 <img src="https://media.giphy.com/media/Wsju5zAb5kcOfxJV9i/giphy.gif" alt="programming">
