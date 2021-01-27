@@ -1,6 +1,6 @@
 # As a parking spot's customer price grows, does its convenience increase?
 
-By [Didier Catz](https://didiercatz.com)
+By [Didier Catz](https://didier.com)
 
 <!-- ![Concept sketch](https://user-images.githubusercontent.com/9499859/103037588-7f551900-456c-11eb-8887-1deec9a4496d.png) -->
 
@@ -8,7 +8,7 @@ By [Didier Catz](https://didiercatz.com)
 
 For this project, a few assumptions will be made. _Convenience_ in this case means how convenient a spot is for the customer — e.g. is it cheap? Are there enough parking spots? Is it easily accessible? _How much comfort does it bring to the customer?_
 
-![About this project](https://raw.githubusercontent.com/didiercatz/functional-programming/main/src/assets/images/about-this-project.svg)
+![About this project](https://raw.githubusercontent.com/didier/functional-programming/main/src/assets/images/about-this-project.svg)
 
 ## An interactive data visualisation on Dutch parking data.
 
@@ -34,7 +34,7 @@ Functional Programming subject of [@cmda-tt](https://github.com/cmda-tt)
 
 ---
 
-![Diving into the code](https://raw.githubusercontent.com/didiercatz/functional-programming/main/src/assets/images/diving-into-the-code.svg)
+![Diving into the code](https://raw.githubusercontent.com/didier/functional-programming/main/src/assets/images/diving-into-the-code.svg)
 
 ## Getting started with this repo
 
@@ -43,13 +43,13 @@ This project assumed you have a valid and stable installation of [Node.js](https
 ### Cloning the repo
 
 ```sh
-git clone https://github.com/didiercatz/frontend-applications.git
+git clone https://github.com/didier/frontend-applications.git
 ```
 
 ### Alternatively, if you just want the files:
 
 ```sh
-npx degit didiercatz/frontend-applications
+npx degit didier/frontend-applications
 ```
 
 ### Install packages
@@ -78,10 +78,10 @@ yarn dev # or npm run dev
 
 ## License
 
-[MIT](https://github.com/didiercatz/frontend-data/blob/main/LICENSE)
+[MIT](https://github.com/didier/frontend-data/blob/main/LICENSE)
 
 ---
 
-💡 _This README consists of a short summary and getting-started guide of this project. If you'd like to get a more comprehensive writeup of what this all entains, please refer to the [wiki](https://github.com/didiercatz/frontend-applications/wiki). For now, enjoy this GIF. *With a hard 'G'*._
+💡 _This README consists of a short summary and getting-started guide of this project. If you'd like to get a more comprehensive writeup of what this all entains, please refer to the [wiki](https://github.com/didier/frontend-applications/wiki). For now, enjoy this GIF. *With a hard 'G'*._
 
 <img src="https://media.giphy.com/media/Wsju5zAb5kcOfxJV9i/giphy.gif" alt="programming">
