@@ -8,23 +8,13 @@
   // Utils
   import { countItemsInArray } from '/src/modules/utils.js'
   import { getAxisValues } from '/src/modules/chart-utils.js'
-
+  import { CONFIG } from '/src/modules/constants.js'
   // Props
   export let data
   let width
   let height
 
   let svg
-
-  // Setup margins for the visualisation
-  const CONFIG = {
-    MARGIN: {
-      TOP: 0,
-      RIGHT: 0,
-      BOTTOM: 24,
-      LEFT: 100,
-    },
-  }
 
   const percentAccessible = data
     .map((entry) => entry.wheelchairAccessible)

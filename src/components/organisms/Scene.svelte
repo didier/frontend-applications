@@ -143,6 +143,12 @@
         compare them based on convenience.
       </h2>
     </TextElement>
+    <TextElement let:width>
+      <Visualisation type="convenience" {width} />
+    </TextElement>
+    <TextElement let:width>
+      
+    </TextElement>
     <TextElement>
       <h4 class="h2">
         As it turns out, paying more for parking does not guarantee more

@@ -13,6 +13,7 @@
   // Utils
   import { locationCostData } from '/src/modules/data.js'
   import { getAxisValues } from '/src/modules/chart-utils.js'
+  import { CONFIG } from '/src/modules/constants.js'
 
   // Props
   export let width
@@ -23,16 +24,6 @@
   let svg
   let div
   let value = 'averageHourlyCost'
-
-  // Setup MARGINs for the visualisation
-  const CONFIG = {
-    MARGIN: {
-      TOP: 0,
-      RIGHT: 0,
-      BOTTOM: 44,
-      LEFT: 150,
-    },
-  }
 
   const costData = locationCostData({ data: data, isSorted: true })
 
@@ -141,16 +132,6 @@
     right: 0;
     width: 100%;
     text-align: right;
-  }
-
-  select {
-    position: absolute;
-    top: 0;
-    right: 0;
-    max-width: 20ch;
-    padding: 12px 16px;
-    border-radius: 8px;
-    margin: 1rem;
   }
 </style>
 

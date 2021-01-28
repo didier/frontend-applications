@@ -45,26 +45,33 @@ export default async function cleanData() {
       )
       return { ...entry, ...tarief }
     })
-    .map((entry) => ({
-      // ...entry,
-      wheelchairAccessible: Boolean(+entry.disabledaccess),
-      parkingCapacity: +entry.capacity,
-      chargingPointCapacity: Number(entry.chargingpointcapacity),
+    .map((entry) => {
+      const chargingPointCapacity = Number.isNaN(entry.chargingpointcapacity)
+        ? 0
+        : +entry.chargingpointcapacity || 0
+      const capacity = Number.isNaN(entry.capacity) ? 0 : +entry.capacity || 0
 
-      // Cost of parking for one hour.
-      hourlyCost: (entry.amountfarepart / entry.stepsizefarepart) * 60 + 0,
+      return {
+        // ...entry,
+        wheelchairAccessible: Boolean(+entry.disabledaccess),
+        parkingCapacity: +capacity,
+        chargingPointCapacity,
 
-      // The area ID of the parking zone.
-      areaManagerId: +entry.areamanagerid,
-      areaId: entry.areaid,
-      description: entry.areadesc,
-      area: getLocationFromDescription(entry.areadesc),
-      location: {
-        latitude: +entry.location.latitude,
-        longitude: +entry.location.longitude,
-        humanReadableAdress: JSON.parse(entry.location.human_address || '{}'),
-      },
-    }))
+        // Cost of parking for one hour.
+        hourlyCost: (entry.amountfarepart / entry.stepsizefarepart) * 60 + 0,
+
+        // The area ID of the parking zone.
+        areaManagerId: +entry.areamanagerid,
+        areaId: entry.areaid,
+        description: entry.areadesc,
+        area: getLocationFromDescription(entry.areadesc),
+        location: {
+          latitude: +entry.location.latitude,
+          longitude: +entry.location.longitude,
+          humanReadableAdress: JSON.parse(entry.location.human_address || '{}'),
+        },
+      }
+    })
 
   // storeDataToLocalStorage(JSON.stringify(mergedData))
 
@@ -87,6 +94,7 @@ export function locationCostData({ data, isSorted = false }) {
       const chargingPoints = entry.data.map(
         (entry) => entry.chargingPointCapacity
       )
+
       return {
         area: entry.location,
         averageHourlyCost: average(tariffs),

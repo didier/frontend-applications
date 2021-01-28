@@ -2,6 +2,7 @@
   import cleanData from '/src/modules/data'
   import Bar2 from '../atoms/Bar2.svelte'
   import Wheelchair from '../atoms/Wheelchair.svelte'
+  import Convenience from '../atoms/Convenience.svelte'
 
   export let type = 'wheelchair'
   const data = cleanData()
@@ -22,7 +23,9 @@
       <option value="2">2</option>
     </select> -->
     <!-- {value}
-     -->
+    -->
     <Bar2 {data} {width} />
+  {:else if type === 'convenience'}
+    <Convenience {data} />
   {/if}
 {/await}
